@@ -1,0 +1,22 @@
+<div>
+    <h3>Current todo items</h3>
+      <table class="table table-condensed">
+        <tr>
+          <th></th>
+          <th>Id</th>
+          <th>Content</th>
+        </tr>
+        <tr *ngFor="let t of todos">
+            <td width="7%"><button (click)="removeTodo(t)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></td>
+            <td width="9%">{{t.id}}</td>
+            <td width="84%">{{t.todoContent}}</td>
+        </tr>
+      </table>
+      <br/>
+
+      <div class="col-form-label text-danger" [hidden]="currTodoContentIsValid">
+        Todos cannot be empty.
+      </div>
+      <input [(ngModel)]="currTodoContent" placeholder="enter todo content" (keyup.enter)="addTodo()">
+      <input type="button" value="add" (click)="addTodo()">
+  </div>
